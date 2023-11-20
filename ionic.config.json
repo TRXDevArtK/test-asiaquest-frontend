@@ -1,0 +1,7 @@
+{
+  "name": "test-asiaquest-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
