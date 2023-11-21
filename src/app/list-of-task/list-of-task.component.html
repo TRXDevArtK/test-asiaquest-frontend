@@ -1,4 +1,5 @@
 <ion-button fill="solid" color="danger" (click)="deleteSelected()">Delete Selected</ion-button>
+<ion-button fill="solid" color="tertiary" (click)="markCompleteAt()">Mark Complete At</ion-button>
 <ion-button fill="outline">Add</ion-button>
 
 <ion-grid *ngIf="taskData && taskData.length > 0">
@@ -14,7 +15,7 @@
   <ion-row *ngFor="let taskItem of taskData">
     <ion-col size="2"><ion-checkbox (ionChange)="addToSelected(taskItem.id, $event)"></ion-checkbox></ion-col>
     <ion-col >{{ taskItem.description }}</ion-col>
-    <ion-col size="1"><ion-checkbox></ion-checkbox></ion-col>
+    <ion-col size="1"><ion-checkbox [checked]="taskItem.complete_at !== null" disabled></ion-checkbox></ion-col>
     <ion-col size="1">{{ taskItem.order }}</ion-col>
     <ion-col size="2"><ion-button fill="solid" color="warning">Edit</ion-button></ion-col>
   </ion-row>

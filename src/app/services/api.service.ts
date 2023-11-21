@@ -58,8 +58,16 @@ export class ApiService {
   }
 
   deleteTask(taskData: Array<number>): Observable<ResultInterface> {
-    console.log(taskData);
     return this.http.post<ResultInterface>(this.apiUrl+'/api/delete/task', {"id":taskData}, {
+      headers: {'X-API-KEY': this.apiKey}
+    }).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError)// check the error
+    );
+  }
+
+  markCompleteTask(taskData: Array<number>): Observable<ResultInterface> {
+    return this.http.post<ResultInterface>(this.apiUrl+'/api/edit/task/complete_at', {"id":taskData}, {
       headers: {'X-API-KEY': this.apiKey}
     }).pipe(
       retry(3), // retry a failed request up to 3 times
