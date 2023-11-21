@@ -62,4 +62,11 @@ export class ListOfTaskComponent  implements OnInit {
     });
   }
 
+  markCompleteAt() {
+    this.apiService.markCompleteTask(this.selectedTaskId).subscribe(
+      (data: ResultInterface) => {
+        this.getAllTask();
+    });
+  }
+
 }
